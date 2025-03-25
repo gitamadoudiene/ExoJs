@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+        #todo-container {
+            width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+.boutonbi{
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+                box-sizing: border-box}
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+        }
+
+        .delete {
+            float: right;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ma todo-List</h1>
+  
+    <div id="todo-container">
+        <!-- Champs de saisie pour ajouter une tâche -->
+        <input type="text" id="todo-input" placeholder="Ajouter une tâche">
+        <button id="todo-button" onclick="addTask()" class="boutonbi">Ajouter</button>
+        <ul id="todo-list">
+            <!-- Liste des tâches -->
+             </ul>
+    </div>
+    <script>
+
+        function addTask() {
+         // Récupération des éléments HTML
+        let taskinput = document.getElementById('todo-input');
+
+
+        //creation d'element li equivalent a la nouvelle tache
+        let li= document.createElement('li');
+        li.textContent= taskinput.value;
+        // console.log(li);
+
+
+
+            //ajout bouton de suppression
+        let deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'X';
+        deleteBtn.classList.add('delete');
+        deleteBtn.onclick = function() {
+            li.remove();
+        };
+        li.appendChild(deleteBtn);
+
+        //ajout de la classe completed
+        li.onclick = function() {
+            li.classList.toggle('completed');
+
+        }
+
+                //ajout de la tache a la liste
+        document.getElementById('todo-list').appendChild(li);
+    }
+        // console.log(taskinput);
+        // var taskbutton = document.getElementById('todo-button');
+        // // console.log(taskbutton);
+
+    </script>
+</body>
+</html>
